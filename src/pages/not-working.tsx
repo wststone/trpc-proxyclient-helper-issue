@@ -27,9 +27,13 @@ export const getStaticProps = async () => {
 
   await helpers.greeting.prefetch({ name: 'client' });
 
+  const data = helpers.dehydrate()
+
+  console.log(data)
+
   return {
     props: {
-      trpcState: helpers.dehydrate(),
+      trpcState: data,
     },
     revalidate: 1,
   };
